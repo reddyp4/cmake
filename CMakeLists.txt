@@ -1,4 +1,5 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.15)
+# version 3.15 to use generator expression
 
 # set the project name and version
 project(cMake VERSION 1.0)
@@ -12,13 +13,23 @@ project(cMake VERSION 1.0)
 add_library(main_compiler_flags INTERFACE)
 target_compile_features(main_compiler_flags INTERFACE cxx_std_11)
 
+# add compiler warning flags just when building this project via
+# the BUILD_INTERFACE genex
+set(gcc_like_cxx "$<COMPILE_LANG_AND_ID:CXX,ARMClang,AppleClang,Clang,GNU,LCC>")
+set(msvc_cxx "$<COMPILE_LANG_AND_ID:CXX,MSVC>")
+# Apply above flags to our interface library
+target_compile_options(main_compiler_flags INTERFACE
+    "$<${gcc_like_cxx}:$<BUILD_INTERFACE:-Wall;-Wextra;-Wshadow;-Wformat=2;-Wunused>>"
+    "$<${msvc_cxx}:$<BUILD_INTERFACE:-W3>>"
+)
+
 # configure a header file to pass some of the CMake settings
 # to the source code
 configure_file(Config.h.in Config.h)
 
 # add sub-directory to add MathFunctions to this project
 add_subdirectory(MathFunctions)
-# The line not needed, since at lower level, we added INTERFACE
+# The below line not needed, since at lower level, we added INTERFACE
 # INTERFACE: Things that consumer require but producers doesnt
 # list(APPEND EXTRA_INCLUDES "${PROJECT_SOURCE_DIR}/MathFunctions")
 
