@@ -2,6 +2,12 @@
 # and mysqrt.cxx
 add_library(MathFunctions MathFunctions.cxx)
 
+# state that anybody linking to us needs to include the current source dir
+# to find MathFunctions.h, while we dont
+target_include_directories(MathFunctions
+                           INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}
+                          )
+
 # Create a variable USE_MYMATH using option and set default to ON
 option(USE_MYMATH "Use example provided math implementation" ON)
 if (USE_MYMATH)
@@ -12,6 +18,12 @@ if (USE_MYMATH)
     # When USE_MYMATH is ON, add a library for SqrtLibrary with source mysqrt.cxx
     add_library(SqrtLibrary STATIC mysqrt.cxx)
 
-    # TODO 13: When USE_MYMATH is ON, link SqrtLibrary to the MathFunctions Library
+    # Link sqrtlibrary to main_compiler_flags
+    target_link_libraries(SqrtLibrary PUBLIC main_compiler_flags)
+
+    # When USE_MYMATH is ON, link SqrtLibrary to the MathFunctions Library
     target_link_libraries(MathFunctions PRIVATE SqrtLibrary)
 endif()
+
+# link MathFunctions to main_compiler_flags
+target_link_libraries(MathFunctions PUBLIC main_compiler_flags)
