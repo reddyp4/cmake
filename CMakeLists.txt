@@ -54,7 +54,10 @@ install(FILES "${PROJECT_BINARY_DIR}/Config.h"
   )
 
 # enable testing
-enable_testing()
+# if CTest
+include(CTest)
+# else
+# enable_testing()
 
 # add basic tests to verify if application is working
 add_test(NAME Runs COMMAND cMake 25)
