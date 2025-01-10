@@ -1,3 +1,0 @@
-// the configured options and settings for Main
-#define Main_VERSION_MAJOR @Main_VERSION_MAJOR@
-#define Main_VERSION_MINOR @Main_VERSION_MINOR@
