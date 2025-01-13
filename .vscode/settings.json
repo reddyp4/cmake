@@ -1,3 +1,7 @@
 {
-    "cmake.sourceDirectory": "/Users/bhageerath/Documents/Firmware/cmake/Tutorial01"
+    "cmake.sourceDirectory": "/Users/bhageerath/Documents/Firmware/cmake",
+    "files.associations": {
+        "ostream": "cpp",
+        "iostream": "cpp"
+    }
 }

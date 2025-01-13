@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libtutorial02.a CMakeFiles/tutorial02.dir/tutorial02.cxx.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libtutorial02.a
