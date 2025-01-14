@@ -9,3 +9,6 @@ This is a simple project with cmake
     - sudo apt install cmake
     - brew install cmake
     - Go to your folder with project and build!  
+
+Link to images:
+https://github.com/reddyp4/cmake/issues/1#issue-2785846918
