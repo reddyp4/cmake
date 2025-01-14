@@ -11,4 +11,4 @@ This is a simple project with cmake
     - Go to your folder with project and build!  
 
 Link to images:
-https://github.com/reddyp4/cmake/issues/1#issue-2785846918
+![Step1](https://github.com/user-attachments/assets/cb9f8e62-db02-4250-b5a3-932e18f2c7bd)
